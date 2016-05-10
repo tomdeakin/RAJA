@@ -1,48 +1,29 @@
 sudo: required
 dist: trusty
 language: cpp
-
 matrix:
   include:
     - compiler: gcc
       addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - g++-4.9
       env: COMPILER=g++-4.9
-#    - compiler: gcc
-#      addons:
-#        apt:
-#          sources:
-#            - ubuntu-toolchain-r-test
-#          packages:
-#            - g++-5
-#      env: COMPILER=g++-5
-#    - compiler: clang
-#      addons:
-#        apt:
-#          sources:
-#            - ubuntu-toolchain-r-test
-#            - llvm-toolchain-precise-3.6
-#          packages:
-#            - clang-3.6
-#      env: COMPILER=clang++-3.6
-#    - compiler: clang
-#      addons:
-#        apt:
-#          sources:
-#            - ubuntu-toolchain-r-test
-#            - llvm-toolchain-precise-3.7
-#          packages:
-#            - clang-3.7
-#      env: COMPILER=clang++-3.7
-
+env:
+  global:
+  - secure: "l9fAJkuA5/smHnTIiOg8h+J0cVN99AwW2d4CS5Trnp0HPopNnOJTiIm6rcAtsgVwlzBRrkqgKiDceth/FEVsnHAQSAN3VJNbFW5nPT5o0IS2lxW3S1TE1Dc2KviVczlexjsOLGTew+ZZmGrqVRK84vGw4sFW385WrqYJHyPXSzpFVZQJiWWXsb7JDwN6o1UvNP7ZWNEFcAArnxlsiu/pscSsq+JKLWqn2tJEy2AvWv1MSfiLhr98nLg+/K6tgCIK5qpAbkz8CoC9zQUtAm8BjKTo4/yEz4ZJ6VWJXg+du4unse26UebHNm2eDm+Tyvxu6K07NDA11JjVgKxm7turdHlYKl2CSf2IiJCPGEV9AUE7pL8nFHo0H8ksEz4sW7iq36/NHL7FeMoMPddsWxHaLUB5gPVVGzJa5kbyvUklD0mhBNdmecXMP+twGceT9nXY1D7w9WKqten5LaFuZo8anYaqRv2DZp7It/L1o36n1visarkX+HpcTjoYSglHq9zBKdV5jdsuT22Wm9ppbqtTIaeMHhvi+oUt+Xzna4sscxX7xkOvqhb3Fh4Pmwn5cPt8lwNzFOxOEU2p/733dmuy5zBIVNoxy2GxjM0C4IkdEU8a70yInpCrvRBRydDjRmpzR5Mo1B7i3TOQLivPCETCDuofqxXpGkURiSyqMA68t/o="
+addons:
+  coverity_scan:
+    project:
+      name: "LLNL/RAJA"
+      description: "Build submitted via Travis CI"
+      notification_email: davidbeckingsale@gmail.com
+      build_command_prepend: "cd scripts; ./config-build.py -hc ../host-configs/linux/gnu.cmake; cd build-gnu-release"
+      build_command:   "make"
+      branch_pattern: coverity_scan
 before_install:
   - sudo apt-get update -qq
 script:
-  - cd scripts
-  - ./config-build.py -hc ../host-configs/linux/gnu.cmake
-  - cd build-gnu-release && make
-  - make test
+  - echo "coverity-scan"
