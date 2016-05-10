@@ -13,16 +13,16 @@ matrix:
       env: COMPILER=g++-4.9
 env:
   global:
-  - secure: "l9fAJkuA5/smHnTIiOg8h+J0cVN99AwW2d4CS5Trnp0HPopNnOJTiIm6rcAtsgVwlzBRrkqgKiDceth/FEVsnHAQSAN3VJNbFW5nPT5o0IS2lxW3S1TE1Dc2KviVczlexjsOLGTew+ZZmGrqVRK84vGw4sFW385WrqYJHyPXSzpFVZQJiWWXsb7JDwN6o1UvNP7ZWNEFcAArnxlsiu/pscSsq+JKLWqn2tJEy2AvWv1MSfiLhr98nLg+/K6tgCIK5qpAbkz8CoC9zQUtAm8BjKTo4/yEz4ZJ6VWJXg+du4unse26UebHNm2eDm+Tyvxu6K07NDA11JjVgKxm7turdHlYKl2CSf2IiJCPGEV9AUE7pL8nFHo0H8ksEz4sW7iq36/NHL7FeMoMPddsWxHaLUB5gPVVGzJa5kbyvUklD0mhBNdmecXMP+twGceT9nXY1D7w9WKqten5LaFuZo8anYaqRv2DZp7It/L1o36n1visarkX+HpcTjoYSglHq9zBKdV5jdsuT22Wm9ppbqtTIaeMHhvi+oUt+Xzna4sscxX7xkOvqhb3Fh4Pmwn5cPt8lwNzFOxOEU2p/733dmuy5zBIVNoxy2GxjM0C4IkdEU8a70yInpCrvRBRydDjRmpzR5Mo1B7i3TOQLivPCETCDuofqxXpGkURiSyqMA68t/o="
+    - secure: "WTlbgtRQtrC1IabqEPP9NpNeDjS6NudsVe+xcXFEvthLsyPPFVmeh7iz247K66GPg44NJlfRASiRo3XvNILjZMLh2uTrGU2gHL3u8+AHtutIiSU7Mwk4DT0jOqUqoD/C70/auKa7EOALQqWBp1OdlzeX9kvUl5PTHUM6ziRSuMUIDpcfYP8ayb/yhWyzfm9tziFM8WBc1N182XxmXZzrsYUavhM6N6iTOE4EdbezG2zwcjs2nR/7zV//XnAsZdmVWgkIjBveKNXMb2rsaSWYeSQmFBRscb1uOd/2Og53apVMg+Xyr3WY5vy/Xj+Np3PE3n3sO2CfM4/ffV7sghp0CW+BF5zOWNNgE4wPlZeNoZOEpqa/VElLugerGT1XI9AdBYknsy464lSl31l4DRm5aU4THlDpQt4phc1L7GtpcshHN1TyTjq4+/Ur0Vgh/2FGdkwOmSAfkb5Gaocc6Pa4SN6sa07TFCozx3zaI2cSbG4quZHaZS28HbsGhmCB3V57+bYwU6+TJh0nOcuY4/NVhjHTgSTAjdrt+XgJo0R4+IMJP1w9qwdxZVi6tNKfPE33tOhMJdV44sonu9LXEiCVsXWQ1yg2g9ognMPx1HIx2s0oD2dGPyu82Pr+gvFBLlLgj1M4mm6QZL+xWyPUFfIa8M8wCwKPYmWucJ3Klk="
 addons:
   coverity_scan:
     project:
       name: "LLNL/RAJA"
       description: "Build submitted via Travis CI"
-      notification_email: davidbeckingsale@gmail.com
-      build_command_prepend: "cd scripts; ./config-build.py -hc ../host-configs/linux/gnu.cmake; cd build-gnu-release"
-      build_command:   "make"
-      branch_pattern: coverity-scan
+    notification_email: davidbeckingsale@gmail.com
+    build_command_prepend: "cd $TRAVIS_BUILD_DIR && cd scripts && ./config-build.py -hc ../host-configs/linux/gnu.cmake && cd build-gnu-release"
+    build_command:   "make"
+    branch_pattern: coverity-scan
 before_install:
   - sudo apt-get update -qq
 script:
