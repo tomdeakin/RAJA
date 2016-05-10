@@ -6,7 +6,7 @@ compiler:
 env:
   global:
     - COMPILER=g++-4.9
-    - secure: "WTlbgtRQtrC1IabqEPP9NpNeDjS6NudsVe+xcXFEvthLsyPPFVmeh7iz247K66GPg44NJlfRASiRo3XvNILjZMLh2uTrGU2gHL3u8+AHtutIiSU7Mwk4DT0jOqUqoD/C70/auKa7EOALQqWBp1OdlzeX9kvUl5PTHUM6ziRSuMUIDpcfYP8ayb/yhWyzfm9tziFM8WBc1N182XxmXZzrsYUavhM6N6iTOE4EdbezG2zwcjs2nR/7zV//XnAsZdmVWgkIjBveKNXMb2rsaSWYeSQmFBRscb1uOd/2Og53apVMg+Xyr3WY5vy/Xj+Np3PE3n3sO2CfM4/ffV7sghp0CW+BF5zOWNNgE4wPlZeNoZOEpqa/VElLugerGT1XI9AdBYknsy464lSl31l4DRm5aU4THlDpQt4phc1L7GtpcshHN1TyTjq4+/Ur0Vgh/2FGdkwOmSAfkb5Gaocc6Pa4SN6sa07TFCozx3zaI2cSbG4quZHaZS28HbsGhmCB3V57+bYwU6+TJh0nOcuY4/NVhjHTgSTAjdrt+XgJo0R4+IMJP1w9qwdxZVi6tNKfPE33tOhMJdV44sonu9LXEiCVsXWQ1yg2g9ognMPx1HIx2s0oD2dGPyu82Pr+gvFBLlLgj1M4mm6QZL+xWyPUFfIa8M8wCwKPYmWucJ3Klk="
+    - secure: "DHjLtKNlLjQx3lOqxU6EU8+4zfxosfzINV9wLyYTsiYoOXA8d/8CKWcOo6yvCV7ww8FHrNCcVxiEfdbDadLEG1Wvi6bGW1x1TMTneXYsJqcEIcOouJLkLj8fBvBGkNseMolkXYsISBiCWhG+7XGxBwcSBBTUBrJ//5tbF3NNgrKb/LTps4UJlhvZBww8go9Y9QVyLT+mXJ594blC3LHO1h70HiaP+6AB1Cd5L7cCixUf0lUPDBHq9oGivPq2HUYhmFb0Rlzt+sXK1raw594l1rHxs8GLF0DeBLYF64gqzMSYz9T33ShHeMAizIqnEu5Rcdgu3oPLqvZ+iI7MJdNYnAKIuIv4HsBkNVLAp7T2Ck1tAcHJWt0imcMbtlntWFBXiA2C7ALw+7MMcl9AWI6+EQxXHfjhUwG0P75dzEf5Iq5crXyd3EPxTZbsV/wuo1K9pD7VtVhlo3Bowja4iqrcqEKEJUDoVTKNlHqR9sZ9UQlALO3GMwvn55CVh+zndu9Iok1H5YDGCkfzEbCjeMtAiHJW+n1ue/8ML6tulJFLnEqmUCa9Hn036H/GCIocR0jSMPv9YMx8YhYlseURelJIVwJ5p4EHetRYYNFV2SHf1RwiksaUI7IceUYoMchvbvDAFxXy1RO1gFlmImXfZ4s/v1HsK1BIYQUD89R7wOOx5OU="
 addons:
   coverity_scan:
     project:
@@ -21,9 +21,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.9
-
 before_install:
   - sudo apt-get update -qq
-
 script:
   - echo "coverity-scan"
