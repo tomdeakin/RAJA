@@ -1,18 +1,11 @@
 sudo: required
 dist: trusty
 language: cpp
-matrix:
-  include:
-    - compiler: gcc
-      addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - g++-4.9
-      env: COMPILER=g++-4.9
+compiler: 
+  - gcc
 env:
   global:
+    - COMPILER=g++-4.9
     - secure: "WTlbgtRQtrC1IabqEPP9NpNeDjS6NudsVe+xcXFEvthLsyPPFVmeh7iz247K66GPg44NJlfRASiRo3XvNILjZMLh2uTrGU2gHL3u8+AHtutIiSU7Mwk4DT0jOqUqoD/C70/auKa7EOALQqWBp1OdlzeX9kvUl5PTHUM6ziRSuMUIDpcfYP8ayb/yhWyzfm9tziFM8WBc1N182XxmXZzrsYUavhM6N6iTOE4EdbezG2zwcjs2nR/7zV//XnAsZdmVWgkIjBveKNXMb2rsaSWYeSQmFBRscb1uOd/2Og53apVMg+Xyr3WY5vy/Xj+Np3PE3n3sO2CfM4/ffV7sghp0CW+BF5zOWNNgE4wPlZeNoZOEpqa/VElLugerGT1XI9AdBYknsy464lSl31l4DRm5aU4THlDpQt4phc1L7GtpcshHN1TyTjq4+/Ur0Vgh/2FGdkwOmSAfkb5Gaocc6Pa4SN6sa07TFCozx3zaI2cSbG4quZHaZS28HbsGhmCB3V57+bYwU6+TJh0nOcuY4/NVhjHTgSTAjdrt+XgJo0R4+IMJP1w9qwdxZVi6tNKfPE33tOhMJdV44sonu9LXEiCVsXWQ1yg2g9ognMPx1HIx2s0oD2dGPyu82Pr+gvFBLlLgj1M4mm6QZL+xWyPUFfIa8M8wCwKPYmWucJ3Klk="
 addons:
   coverity_scan:
@@ -23,7 +16,14 @@ addons:
     build_command_prepend: "cd $TRAVIS_BUILD_DIR && cd scripts && ./config-build.py -hc ../host-configs/linux/gnu.cmake && cd build-gnu-release"
     build_command:   "make"
     branch_pattern: coverity-scan
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.9
+
 before_install:
   - sudo apt-get update -qq
+
 script:
   - echo "coverity-scan"
