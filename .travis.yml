@@ -22,7 +22,7 @@ addons:
       notification_email: davidbeckingsale@gmail.com
       build_command_prepend: "cd scripts; ./config-build.py -hc ../host-configs/linux/gnu.cmake; cd build-gnu-release"
       build_command:   "make"
-      branch_pattern: coverity_scan
+      branch_pattern: coverity-scan
 before_install:
   - sudo apt-get update -qq
 script:
