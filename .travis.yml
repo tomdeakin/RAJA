@@ -25,3 +25,4 @@ before_install:
   - sudo apt-get update -qq
 script:
   - echo "coverity-scan"
+  - cat /home/travis/build/LLNL/RAJA/scripts/build-gnu-release/cov-int/scm_log.txt
